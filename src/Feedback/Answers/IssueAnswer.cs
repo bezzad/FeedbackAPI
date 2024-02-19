@@ -4,10 +4,11 @@ namespace Feedback.Answers;
 
 public class IssueAnswer : Answer
 {
-    public byte[] Files { get; set; }
+    public IList<File> Files { get; set; }
 
     public IssueAnswer()
     {
         Type = QuestionType.Issue;
+        Files = new List<File>();
     }
 }

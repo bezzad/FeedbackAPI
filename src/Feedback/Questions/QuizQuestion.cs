@@ -2,10 +2,11 @@ namespace Feedback.Questions;
 
 public class QuizQuestion : Question
 {
-    public QuizOption[] Options { get; set; }
+    public IList<QuizOption> Options { get; set; }
 
     public QuizQuestion()
     {
         Type = QuestionType.Quiz;
+        Options = new List<QuizOption>();
     }
 }
