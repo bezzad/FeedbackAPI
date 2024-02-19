@@ -1,21 +1,19 @@
-﻿namespace Feedback;
+﻿using Microsoft.EntityFrameworkCore;
+
+namespace Feedback;
 
 public class FeedbackService
 {
-    private readonly string _connectionString;
+    private readonly FeedbackContext _context;
 
-    public FeedbackService(string connectionString)
+    public FeedbackService(FeedbackContext context)
     {
-        _connectionString = connectionString; // "Data Source=.;Persist Security Info=True;User ID=sa;Password=Admin@13;Trust Server Certificate=True"
+        _context = context;
     }
 
-    public async Task Start()
+    public async Task EnsureCreatedAsync()
     {
-        using var context = new FeedbackContext(_connectionString);
-
         //creates db if not exists 
-        context.Database.EnsureCreated();
-
-        await context.SaveChangesAsync();
+        await _context.Database.MigrateAsync();
     }
 }

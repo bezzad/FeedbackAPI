@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Feedback;
 
-internal class FeedbackContext : DbContext
+public class FeedbackContext : DbContext
 {
     private readonly string _connectionString;
 
@@ -12,13 +12,12 @@ internal class FeedbackContext : DbContext
     public DbSet<Answer> Answers { get; set; }
     public DbSet<QuizOption> QuizOptions { get; set; }
 
-    public FeedbackContext(string connectionString)
-    {
-        _connectionString = connectionString;
-    }
+    public FeedbackContext(DbContextOptions<FeedbackContext> options) : base(options)
+    { }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        optionsBuilder.UseSqlServer(_connectionString);
+        if (!optionsBuilder.IsConfigured)
+            optionsBuilder.UseSqlServer(_connectionString);
     }
 }

@@ -1,6 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Feedback", "Feedback\Feedback.csproj", "{31C0D46E-D8AE-467E-B48D-C00DB538656D}"
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34601.278
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Feedback", "Feedback\Feedback.csproj", "{31C0D46E-D8AE-467E-B48D-C00DB538656D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FeedbackAPI", "Samples\FeedbackAPI\FeedbackAPI.csproj", "{1022BB1E-B9C3-4A1D-B34A-3EC4E0E590F1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -12,5 +17,12 @@ Global
 		{31C0D46E-D8AE-467E-B48D-C00DB538656D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{31C0D46E-D8AE-467E-B48D-C00DB538656D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{31C0D46E-D8AE-467E-B48D-C00DB538656D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1022BB1E-B9C3-4A1D-B34A-3EC4E0E590F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1022BB1E-B9C3-4A1D-B34A-3EC4E0E590F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1022BB1E-B9C3-4A1D-B34A-3EC4E0E590F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1022BB1E-B9C3-4A1D-B34A-3EC4E0E590F1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
 	EndGlobalSection
 EndGlobal

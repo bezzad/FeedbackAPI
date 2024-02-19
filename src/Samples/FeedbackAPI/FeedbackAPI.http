@@ -1,0 +1,6 @@
+@HostAddress = https://localhost:7299
+
+GET {{HostAddress}}/feedback
+Accept: application/json
+
+###
