@@ -5,7 +5,7 @@ namespace Feedback.Answers;
 public class QuizAnswer : Answer
 {
     public int OptionId { get; set; }
-    public virtual QuizOption Option { get; set; }
+    public QuizOption Option { get; set; }
 
     public QuizAnswer()
     {

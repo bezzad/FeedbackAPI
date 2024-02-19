@@ -6,14 +6,11 @@ namespace Feedback.Answers;
 public class File
 {
     [Key] public Guid Id { get; set; }
-    public string Name { get; set; } = string.Empty;
+    [MaxLength(128)] public string Name { get; set; } = string.Empty;
     [NotMapped] public byte[] Data { get; set; }
-    public string? FileType { get; set; }
+    [MaxLength(6)] public string? FileType { get; set; }
     public long? Length { get; set; }
-    public IList<IssueAnswer> Answers { get; set; }
+    public long AnswerId { get; set; }
+    public IssueAnswer Answer { get; set; }
 
-    public File()
-    {
-        Answers = new List<IssueAnswer>();
-    }
 }

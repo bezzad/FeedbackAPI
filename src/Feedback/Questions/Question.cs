@@ -1,9 +1,11 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace Feedback.Questions;
 
 public class Question
 {
-    public int Id { get; set; }
-    public QuestionType Type { get; set; } = QuestionType.Text;
-    public string Content { get; set; }
+    [Key] public int Id { get; set; }
+    public QuestionType Type { get; protected set; } = QuestionType.Text;
+    [MaxLength(1000)] public string Content { get; set; } = string.Empty;
 }
 

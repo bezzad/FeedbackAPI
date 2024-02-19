@@ -11,6 +11,7 @@ public class FeedbackContext : DbContext
     public DbSet<Question> Questions { get; set; }
     public DbSet<Answer> Answers { get; set; }
     public DbSet<QuizOption> QuizOptions { get; set; }
+    public DbSet<Answers.File> Files { get; set; }
 
     public FeedbackContext(DbContextOptions<FeedbackContext> options) : base(options)
     { }
