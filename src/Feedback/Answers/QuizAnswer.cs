@@ -1,4 +1,6 @@
-namespace Feedback;
+using Feedback.Questions;
+
+namespace Feedback.Answers;
 
 public class QuizAnswer : Answer
 {
