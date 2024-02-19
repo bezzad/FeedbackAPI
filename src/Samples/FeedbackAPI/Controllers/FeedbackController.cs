@@ -1,4 +1,5 @@
 using Feedback;
+using Feedback.Questions;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FeedbackAPI.Controllers
@@ -20,7 +21,20 @@ namespace FeedbackAPI.Controllers
         public async Task EnsureCreated()
         {
             await _feedbackService.EnsureCreatedAsync();
+        }
 
+        [HttpGet(Name = "Question/{questionId}")]
+        public async Task<IActionResult> GetFeedbackQuestion(int questionId)
+        {
+            var result = await _feedbackService.GetQuestionAsync(questionId);
+            return Ok(result);
+        }
+
+        [HttpGet(Name = "Answer/{answerId}")]
+        public async Task<IActionResult> GetAnswer(int answerId)
+        {
+            var result = await _feedbackService.GetAnswerAsync(answerId);
+            return Ok(result);
         }
     }
 }
