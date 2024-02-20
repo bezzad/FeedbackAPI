@@ -28,15 +28,27 @@ public class FeedbackService
         return await _context.Feedbacks.Where(q => q.Id == id).AsNoTracking().SingleOrDefaultAsync();
     }
 
+    public async Task<QuizOption?> GetQuizOptionAsync(int id)
+    {
+        return await _context.QuizOptions.Where(q => q.Id == id).AsNoTracking().SingleOrDefaultAsync();
+    }
+
     public async Task AddQuestion(Question question)
     {
-        await _context.Questions.AddAsync(question);
+        _context.Questions.Add(question);
         await _context.SaveChangesAsync();
     }
 
-    public async Task AddFeedback(Models.Feedback answer)
+    public async Task AddFeedback(Models.Feedback feedback)
     {
-        await _context.Feedbacks.AddAsync(answer);
+        _context.Feedbacks.Add(feedback);
         await _context.SaveChangesAsync();
     }
+
+    public async Task AddOption(QuizOption option)
+    {
+        _context.QuizOptions.Add(option);
+        await _context.SaveChangesAsync();
+    }
+
 }
