@@ -1,4 +1,5 @@
 ﻿using Feedback.Models;
+using Mapster;
 using Microsoft.EntityFrameworkCore;
 
 namespace Feedback;
@@ -20,22 +21,46 @@ public class FeedbackService
 
     public async Task<Question?> GetQuestionAsync(int id)
     {
-        return await _context.Questions.Where(q=> q.Id == id).AsNoTracking().SingleOrDefaultAsync();
+        return await _context.Questions.AsNoTracking().Where(q=> q.Id == id).SingleOrDefaultAsync();
     }
 
     public async Task<Models.Feedback?> GetFeedbackAsync(int id)
     {
-        return await _context.Feedbacks.Where(q => q.Id == id).AsNoTracking().SingleOrDefaultAsync();
+        return await _context.Feedbacks.AsNoTracking().Where(q => q.Id == id).SingleOrDefaultAsync();
     }
 
     public async Task<QuizOption?> GetQuizOptionAsync(int id)
     {
-        return await _context.QuizOptions.Where(q => q.Id == id).AsNoTracking().SingleOrDefaultAsync();
+        return await _context.QuizOptions.AsNoTracking().Where(q => q.Id == id).SingleOrDefaultAsync();
     }
 
-    public async Task AddQuestion(Question question)
+    public async Task AddIssueQuestion(QuestionRequestDto questionReq)
     {
-        _context.Questions.Add(question);
+        var question = questionReq.Adapt<Question>();
+        await AddQuestionAsync(question);
+    }
+
+    public async Task AddQuestion(QuestionRequestDto questionReq)
+    {
+        var question = questionReq.Adapt<Question>();
+        await AddQuestionAsync(question);
+    }
+
+    public async Task AddRateQuestion(QuestionRequestDto questionReq)
+    {
+        var question = questionReq.Adapt<RateQuestion>();
+        await AddQuestionAsync(question);
+    }
+
+    public async Task AddQuizQuestion(QuizQuestionRequestDto questionReq)
+    {
+        var question = questionReq.Adapt<QuizQuestion>();
+        await AddQuestionAsync(question);
+    }
+
+    private async Task AddQuestionAsync(Question entity)
+    {
+        _context.Questions.Add(entity);
         await _context.SaveChangesAsync();
     }
 
@@ -45,9 +70,10 @@ public class FeedbackService
         await _context.SaveChangesAsync();
     }
 
-    public async Task AddOption(QuizOption option)
+    public async Task AddOption(QuizOptionDto option)
     {
-        _context.QuizOptions.Add(option);
+        var opt = option.Adapt<QuizOption>();
+        _context.QuizOptions.Add(opt);
         await _context.SaveChangesAsync();
     }
 
