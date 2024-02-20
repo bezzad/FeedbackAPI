@@ -5,10 +5,10 @@ namespace Feedback.Models;
 
 public class File
 {
-    [Key] public Guid Id { get; set; }
-    [MaxLength(128)] public string Name { get; set; } = string.Empty;
+    [Key] public Guid Id { get; set; } = Guid.NewGuid();
+    [NotMapped] public string Name => Id + "." + FileType;
     [NotMapped] public byte[] Data { get; set; } = null;
-    [MaxLength(6)] public string? FileType { get; set; }
+    [MaxLength(6)][Column(TypeName = "VARCHAR")] public string? FileType { get; set; }
     public long? Length { get; set; }
     public long FeedbackId { get; set; }
     public Issue Feedback { get; set; }
