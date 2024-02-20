@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace Feedback.Questions;
+namespace Feedback.Models;
 
 public class QuizOption
 {

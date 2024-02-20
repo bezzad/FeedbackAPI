@@ -1,12 +1,9 @@
-using Feedback.Questions;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Feedback.Answers;
+namespace Feedback.Models;
 
-public class Answer
+public class Feedback
 {
-    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     [Key]
     public long Id { get; set; }
     public long UserId { get; set; }

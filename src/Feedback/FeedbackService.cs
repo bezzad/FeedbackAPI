@@ -1,5 +1,4 @@
-﻿using Feedback.Answers;
-using Feedback.Questions;
+﻿using Feedback.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace Feedback;
@@ -24,9 +23,9 @@ public class FeedbackService
         return await _context.Questions.Where(q=> q.Id == id).AsNoTracking().SingleOrDefaultAsync();
     }
 
-    public async Task<Answer?> GetAnswerAsync(int id)
+    public async Task<Models.Feedback?> GetFeedbackAsync(int id)
     {
-        return await _context.Answers.Where(q => q.Id == id).AsNoTracking().SingleOrDefaultAsync();
+        return await _context.Feedbacks.Where(q => q.Id == id).AsNoTracking().SingleOrDefaultAsync();
     }
 
     public async Task AddQuestion(Question question)
@@ -35,9 +34,9 @@ public class FeedbackService
         await _context.SaveChangesAsync();
     }
 
-    public async Task AddAnswer(Answer answer)
+    public async Task AddFeedback(Models.Feedback answer)
     {
-        await _context.Answers.AddAsync(answer);
+        await _context.Feedbacks.AddAsync(answer);
         await _context.SaveChangesAsync();
     }
 }

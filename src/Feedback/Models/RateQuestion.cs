@@ -1,4 +1,4 @@
-namespace Feedback.Questions;
+namespace Feedback.Models;
 
 public class RateQuestion : Question
 {

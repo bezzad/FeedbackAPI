@@ -1,13 +1,11 @@
-using Feedback.Questions;
+namespace Feedback.Models;
 
-namespace Feedback.Answers;
-
-public class QuizAnswer : Answer
+public class Quiz : Feedback
 {
     public int OptionId { get; set; }
     public QuizOption Option { get; set; }
 
-    public QuizAnswer()
+    public Quiz()
     {
         Type = QuestionType.Quiz;
     }
